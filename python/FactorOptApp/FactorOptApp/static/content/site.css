@@ -1,0 +1,191 @@
+html {
+    position: relative;
+}
+
+body {
+    background: #f5f8fa;
+}
+
+.progress-spinner-container {
+    width: 70px;
+}
+
+.breadcrumb-item.active {
+    color: black;
+} 
+
+.home-page-button {
+    min-width: 250px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+
+.object-table-action-button {
+    width: 6em;
+}
+
+.project-settings-section-header {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-top: 1.0rem;
+}
+
+.project-settings-subsection-header {
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-left: 1.0rem;
+}
+
+.project-settings-label {
+    width: 250px;
+    text-align: right;
+    margin-right: 0.5em;
+}
+
+.project-excel-export-button {
+    width: 11em;
+    margin-bottom: 0.5em;
+}
+
+table.project-stocks-table th:nth-child(-n+2) {
+    width: 80px !important;
+    max-width: 80px;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+table.project-stocks-table td:nth-child(-n+2) {
+    width: 80px !important;
+    max-width: 80px;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+.object-table th {
+    border-top: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.object-table th, .object-table td  {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.data-table th {
+    border-top: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.data-table td  {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+
+.modal-table th, .modal-table td {
+    padding: 0.3rem;
+}
+
+.modal-table th {
+    border-top: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table-checkbox-button {
+    padding: .0rem .3rem;
+}
+
+/* DataTables customisation */
+
+.table-filter {
+    width: 300px;
+}
+
+/* Workaround for datatables setting row margin to zero */
+.dt-bootstrap4 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.dataTables_filter > label {
+    margin-bottom: 0px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0;
+    white-space: inherit;
+    text-align: inherit;
+}
+
+table.dataTable.dtr-column > tbody > tr > td.control:before,
+table.dataTable.dtr-column > tbody > tr > th.control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, 
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before
+{
+    top: 8px;
+    left: 5px;
+    height: 16px;
+    width: 16px;
+    margin-top: 0px;
+    margin-left: 0px;
+    display: block;
+    position: absolute;
+    color: inherit;
+    border: none;
+    border-radius: inherit;
+    box-shadow: none;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    font-size: 1.0em;
+    line-height: inherit;
+    content: '\f0fe';
+    background-color: inherit;
+}
+
+table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+table.dataTable.dtr-column > tbody > tr.parent th.control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, 
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before
+{
+    content: '\f146';
+    background-color: inherit;
+}
+
+
+.table-analysis-summary {
+    background-color: rgb(224, 234, 243);
+}
+
+table.table-analysis-summary td.score {
+    text-align: right;
+}
+
+table.table-analysis-summary td.value-selected {
+    background-color: rgb(171, 194, 218);
+}
+
+.table-analysis-detail {
+    background-color: rgb(224, 234, 243);
+}
+
+table.table-analysis-detail th.heading {
+    text-align: center;
+}
+
+table.table-analysis-detail td.month-value {
+    text-align: center;
+}
+
+table.table-analysis-detail td.return-value {
+    text-align: center;
+}
+
+.table-metrics {
+    background-color: rgb(224, 234, 243);
+}

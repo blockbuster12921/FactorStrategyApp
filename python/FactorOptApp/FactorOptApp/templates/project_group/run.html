@@ -1,0 +1,54 @@
+<div class="modal" id="project-group-report-error-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title h5 text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Failed to Generate Report</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <span id="project-group-report-error-detail"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col mb-3">
+        <div class="d-flex">
+            <div class="btn-group" role="group" aria-label="Start/stop Run">
+                <button id="start-project-group-run-button" type="button" class="btn btn-primary">Start</button>
+                <button id="stop-project-group-run-button" type="button" class="btn btn-primary" disabled>Stop</button>
+            </div>
+            <div id="project-group-run-progress" class="spinner-border text-primary ml-3" role="status" hidden></div>
+            <div id="project-group-run-complete" class="h5 ml-3 my-2 py-0" role="status" hidden>Run Complete</div>
+            <div class="ml-auto">
+                <button id="project-group-run-reset-button" type="button" class="btn btn-warning">Clear Results</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-auto mb-3">
+        <div class="h5 my-2 py-0">Excel Reports:</div>
+    </div>
+    <div class="col mb-3">
+        <div class="d-flex align-content-start flex-wrap">
+            <div class="ml-2">
+                <button id="project-group-excel-export-stock-ranking-button" class="btn btn-primary btn-block project-excel-export-button" type="button">
+                    Stock Ranking
+                    <span class="spinner-border spinner-border-sm button-progress-spinner ml-1" role="status" hidden></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="h4">Run History</div>
+        <table id="project-group-run-history-table" class="table table-sm data-table w-100" cellspacing="0">
+        </table>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col">
+        <div class="form-row mb-1">
+            <div class="col-lg-1 col-md-3 col-sm-4">
+                <label class="col-form-label" for="project-group-name-input">Name:</label>
+            </div>
+            <div class="col">
+                <input id="project-group-name-input" class="form-control" type="text" size="80" value="{{ project_group['Name'] }}">
+            </div>
+        </div>
+        <div class="form-row mb-1">
+            <div class="col-lg-1 col-md-3 col-sm-4">
+                <label class="col-form-label" for="project-group-notes-input">Notes:</label>
+            </div>
+            <div class="col">
+                <textarea id="project-group-notes-input" class="form-control" cols="50" rows="3">{{ project_group['Notes'] }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <div class="h4">Projects</div>
+        <div>
+            <table id="project-group-projects-table" class="table compact object-table w-100" cellspacing="0">
+            </table>
+        </div>
+    </div>
+</div>

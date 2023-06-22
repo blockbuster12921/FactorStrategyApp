@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:4.0
+    command: --wiredTigerCacheSizeGB 1.0
+    volumes:
+      - mongodb_volume:/data/db
+  flask_app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    depends_on:
+     - mongo
+    volumes:
+      - ./python:/python
+      - ./data:/data
+
+volumes:
+  mongodb_volume:

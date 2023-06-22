@@ -1,0 +1,9 @@
+version: '3'
+services:
+  unittest:
+    build:
+      context: .
+      dockerfile: Dockerfile-unittest
+    volumes:
+     - ./python:/python
+     - ./data:/data

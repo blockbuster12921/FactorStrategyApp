@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:4.0
+    command: --wiredTigerCacheSizeGB 1.0
+    volumes:
+      - ./db/mongodb:/data/db
+  redis_jupyter:
+    image: redis
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile-jupyter
+    ports:
+     - "8891:8890"
+    depends_on:
+     - mongo
+     - redis_jupyter
+    volumes:
+     - ./python:/python
+     - ./data:/data
+     - ~:/home/jovyan
+     - ~/OneDrive/Freelancing/Projects/SimonKelley:/onedrive

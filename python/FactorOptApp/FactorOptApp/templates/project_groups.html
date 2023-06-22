@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+
+<script>
+
+  "use strict";
+
+  $(document).ready(function () {
+
+    resetModalForms();
+
+    initProjectGroups();
+
+    registerDeleteProjectGroupEvents();
+  });
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="modal" id="delete-project-group-modal" tabindex="-1" role="dialog" aria-labelledby="delete-project-group-modal">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <div class="modal-title">Delete Project Group</div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+                <div class="modal-body">
+                    Are you sure you want to permanently delete the project group '<span id="delete-project-group-modal-project-name"></span>'?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete-project-group-modal-submit-button" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="breadcrumb-item active">Project Groups</li>
+            </ol>
+        </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="d-flex">
+        <div class="h3 mb-0 pl-2 mr-auto">Project Groups</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <div>
+        <table id="project-groups-table" class="table compact object-table w-100" cellspacing="0">
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

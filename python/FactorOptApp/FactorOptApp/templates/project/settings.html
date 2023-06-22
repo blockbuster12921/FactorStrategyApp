@@ -1,0 +1,628 @@
+<div class="project-settings-section-header">General</div>
+
+<div class="project-settings-oos-container">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Out-of-Sample Test Period:</label>
+        </div>
+        <div>
+            <select id="project-settings-oos-start-month-select" class="selectpicker" data-width="130px">
+            </select>
+        </div>
+        <div class="ml-2">
+            <select id="project-settings-oos-start-year-select" class="selectpicker" data-width="100px" data-size="10">
+            </select>
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">to</label>
+        </div>
+        <div class="ml-2">
+            <select id="project-settings-oos-end-month-select" class="selectpicker" data-width="130px">
+            </select>
+        </div>
+        <div class="ml-2">
+            <select id="project-settings-oos-end-year-select" class="selectpicker" data-width="100px" data-size="10">
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-long-short-pairs-target">Long-Short Pairs:</label>
+    </div>
+    <div>
+        <input type="number" min="1" max="20" step="1" class="form-control" id="project-settings-long-short-pairs-target">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label" for="project-settings-long-short-pairs-delta">&plusmn;</label>
+    </div>
+    <div class="ml-2">
+        <input type="number" min="0" max="10" step="1" class="form-control" id="project-settings-long-short-pairs-delta">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factors-enabled-select">Enable/Disable Factors:</label>
+    </div>
+    <div>
+        <select id="project-settings-factors-enabled-select" class="selectpicker" data-actions-box="true"
+            data-selected-text-format="count > 20" data-live-search="true" data-width="300px" data-size="20" multiple>
+        </select>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Minimum Factor Data Completeness:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-factor-data-completeness-input" class="form-control" type="number" min="0" max="100"
+            step="0.1">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">for each month</label>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Returns Outlier Rejection:</label>
+    </div>
+    <div>
+        <select id="project-settings-returns-outlier-rejection-method-select" class="selectpicker" data-width="120px">
+            <option value="none">Disabled</option>
+            <option value="standard">Standard</option>
+            <option value="robust">Robust</option>
+        </select>
+    </div>
+    <div class="project-settings-returns-outlier-rejection-setting ml-2">
+        <label class="col-form-label">with Z-Score cutoff</label>
+    </div>
+    <div class="project-settings-returns-outlier-rejection-setting ml-2">
+        <input id="project-settings-returns-outlier-rejection-cutoff-input" class="form-control" type="number" min="0" max="1000"
+            step="0.01">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Average Returns Outlier Range:</label>
+    </div>
+    <div>
+        <input id="project-settings-average-returns-outlier-range-start-input" class="form-control" type="number" min="0" max="1000"
+            step="0.01">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">to</label>
+    </div>
+    <div class="ml-2">
+        <div class="input-group">
+            <input id="project-settings-average-returns-outlier-range-end-input" class="form-control" type="number" min="0" max="1000"
+                step="0.01">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-market-cap-filter-input">Market Cap Filter:</label>
+    </div>
+    <div>
+        <input id="project-settings-market-cap-filter-input" class="form-control" type="number" min="0" max="10000000" step="1">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">based on</label>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-market-cap-filter-month-select" class="selectpicker project-settings-market-cap-filter-date-select" data-width="130px">
+        </select>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-market-cap-filter-year-select" class="selectpicker project-settings-market-cap-filter-date-select" data-width="100px" data-size="10">
+        </select>
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">applied to</label>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-market-cap-filter-apply-select" class="selectpicker" data-width="300px" data-actions-box="true" 
+            data-selected-text-format="count > 2" multiple>
+            <option value="DisableFactors">Disable Factors</option>
+            <option value="FactorClustering">Factor Clustering</option>
+            <option value="Driver">Driver</option>
+            <option value="FactorFilter">Factor Filter</option>
+            <option value="FactorOptimize">Optimize</option>
+            <option value="FactorGenerate">Generate</option>
+            <option value="FactorStrategies">Factor Strategies</option>
+        </select>
+    </div>
+</div>
+
+<div class="project-settings-section-header">Driver</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-driver-method-select">Calculation Method:</label>
+    </div>
+    <div>
+        <select id="project-settings-driver-method-select" class="selectpicker" data-width="300px">
+            <option value="fixed" hidden>Fixed</option>
+            <option value="rolling" hidden>Rolling</option>
+            <option value="unbiased" hidden>Unbiased</option>
+            <option value="correlation">Monthly Correlation</option>
+            <option value="variable_direction" hidden>Variable Direction</option>
+            <option value="correlation_average_over_stocks" hidden>Correlation (average over stocks)</option>
+            <option value="rank_average_correlation">Return Rank Correlation</option>
+            <option value="rank_ttest">Return Rank T-Test</option>
+            <option value="binned_rank_correlation">Binned Return Rank Correlation</option>
+        </select>
+    </div>
+</div>
+<div class="project-settings-driver-return-rank-ttest-setting">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">T-Test Percentage:</label>
+        </div>
+        <div>
+            <div class="input-group">
+                <input id="project-settings-driver-return-rank-ttest-percentage-input" class="form-control" type="number" min="0" max="50" step="0.1">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="project-settings-driver-binned-return-rank-correlation-setting">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Number of Bins:</label>
+        </div>
+        <div>
+            <div class="input-group">
+                <input id="project-settings-driver-binned-return-rank-correlation-bin-percentage-input" class="form-control" type="number" min="0" max="100" step="0.1">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">of stocks</label>
+        </div>
+    </div>
+</div>
+<div class="project-settings-driver-return-rank-correlation-setting">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Order:</label>
+        </div>
+        <div>
+            <select id="project-settings-driver-return-rank-correlation-order-select" class="selectpicker" data-width="150px">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                <option value="spliced">Spliced</option>
+            </select>
+        </div>
+        <div class="ml-2 project-settings-driver-return-rank-correlation-order-spliced-setting">
+            <label class="col-form-label">retaining</label>
+        </div>
+        <div class="ml-2 project-settings-driver-return-rank-correlation-order-spliced-setting">
+            <div class="input-group">
+                <input id="project-settings-driver-return-rank-correlation-splice-percent-input" class="form-control" type="number" min="0" max="100" step="0.1">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+        <div class="ml-2 project-settings-driver-return-rank-correlation-order-spliced-setting">
+            <label class="col-form-label">of rows</label>
+        </div>
+    </div>
+</div>
+<div class="project-settings-driver-monthly-correlation-setting">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Minimum Data Requirement:</label>
+        </div>
+        <div>
+            <div class="input-group">
+                <input id="project-settings-driver-monthly-correlation-min-data-months" class="form-control" type="number" min="0" max="1000" step="1">
+                <div class="input-group-append">
+                    <span class="input-group-text">months</span>
+                </div>
+            </div>
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">of data</label>
+        </div>
+    </div>
+</div>
+<div class="project-settings-driver-return-rank-correlation-setting">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Minimum Data Requirement:</label>
+        </div>
+        <div>
+            <div class="input-group">
+                <input id="project-settings-driver-return-rank-correlation-min-data-months" class="form-control" type="number" min="0" max="1000" step="1">
+                <div class="input-group-append">
+                    <span class="input-group-text">months</span>
+                </div>
+            </div>
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">of data</label>
+        </div>
+    </div>
+</div>
+<div class="project-settings-driver-average-by-settings">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Average by:</label>
+        </div>
+        <div>
+            <select id="project-settings-driver-correlation-average-method-select" class="selectpicker" data-width="100px">
+                <option value="median">Median</option>
+                <option value="mean">Mean</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Calculate over previous:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-driver-correlation-average-months-input" class="form-control" type="number" min="1" max="1200"
+                step="1">
+            <div class="input-group-append">
+                <span class="input-group-text">months</span>
+            </div>
+        </div>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-driver-correlation-basis-select" class="selectpicker" data-width="200px">
+            <option value="all_in_sample">All In-Sample</option>
+            <option value="rolling_in_sample">Rolling In-Sample</option>
+            <option value="rolling_out_of_sample">Rolling Out-Of-Sample</option>
+        </select>
+    </div>
+    <div class="ml-2 mr-2">
+        <label class="col-form-label">using data after</label>
+    </div>
+    <div hidden>
+        <div>
+            <select id="project-settings-driver-insample-start-month-select" class="selectpicker project-settings-driver-insample-start-select" data-width="130px">
+            </select>
+        </div>
+        <div class="ml-2">
+            <select id="project-settings-driver-insample-start-year-select" class="selectpicker project-settings-driver-insample-start-select" data-width="100px" data-size="10">
+            </select>
+        </div>
+        <div class="ml-2 mr-2">
+            <label class="col-form-label">to</label>
+        </div>
+    </div>
+    <div>
+        <select id="project-settings-driver-insample-end-month-select" class="selectpicker project-settings-driver-insample-end-select" data-width="130px">
+        </select>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-driver-insample-end-year-select" class="selectpicker project-settings-driver-insample-end-select" data-width="100px" data-size="10">
+        </select>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Factor Weight Scale:</label>
+    </div>
+    <div>
+        <input id="project-settings-driver-factor-weight-scale-input" class="form-control" type="number" min="0" max="100"
+            step="0.01">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Top Factors:</label>
+    </div>
+    <div>
+        <input id="project-settings-driver-top-factors-input" class="form-control" type="number" min="1" max="1000"
+            step="1">
+    </div>
+</div>
+<div hidden>
+    <div class="d-flex align-items-center mb-2" hidden>
+        <div class="project-settings-label">
+            <label class="col-form-label" for="project-settings-factor-outlier-rejection-input">Factor Outlier Rejection Default:</label>
+        </div>
+        <div>
+            <div class="input-group">
+                <input id="project-settings-factor-outlier-rejection-input" class="form-control" type="number" min="0" max="1000"
+                    step="0.01">
+                <div class="input-group-append">
+                    <span class="input-group-text">standard deviations</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Factor Outlier Rejection Range:</label>
+        </div>
+        <div>
+            <input id="project-settings-factor-outlier-rejection-range-start-input" class="form-control" type="number" min="0" max="1000"
+                step="0.01">
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">to</label>
+        </div>
+        <div class="ml-2">
+            <div class="input-group">
+                <input id="project-settings-factor-outlier-rejection-range-end-input" class="form-control" type="number" min="0" max="1000"
+                    step="0.01">
+                <div class="input-group-append">
+                    <span class="input-group-text">standard deviations</span>
+                </div>
+            </div>
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">using step</label>
+        </div>
+        <div class="ml-2">
+            <input id="project-settings-factor-outlier-rejection-range-step-input" class="form-control" type="number" min="0.01" max="100"
+                step="0.01">
+        </div>
+    </div>
+</div>
+
+
+<div class="project-settings-section-header">Factor Selection</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factor-selection-strategy-select">Factor Strategies:</label>
+    </div>
+    <div>
+        <select id="project-settings-factor-selection-strategy-select" class="selectpicker" data-size="15" data-actions-box="true"
+            data-selected-text-format="count > 1" data-live-search="true" data-width="auto" multiple>
+        </select>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factor-selection-period-duration-input">Factor Selection Period Duration:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-factor-selection-period-duration-input" class="form-control" type="number" min="1" max="240"
+                step="1">
+            <div class="input-group-append">
+                <span class="input-group-text">months</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factor-selection-st-period-duration-input">ST Period:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-factor-selection-st-period-duration-input" class="form-control" type="number" min="1" max="240"
+                step="1">
+            <div class="input-group-append">
+                <span class="input-group-text">months</span>
+            </div>
+        </div>
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label" for="project-settings-factor-selection-st-period-weight-input">using weight</label>
+    </div>
+    <div class="ml-2">
+        <input id="project-settings-factor-selection-st-period-weight-input" class="form-control" type="number" min="0" max="1000"
+            step="0.01">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Objective:</label>
+    </div>
+    <div>
+        <select id="project-settings-factor-selection-objective-select" class="selectpicker" data-width="200px">
+            <option value="corr">Correlation</option>
+            <option value="rank_corr">Rank Correlation</option>
+            <option value="score">Score</option>
+        </select>
+    </div>
+</div>
+<div class="project-settings-factor-selection-long-short-pairs-settings">
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label">Long-Short Pairs Range for Score:</label>
+        </div>
+        <div>
+            <input id="project-settings-factor-selection-long-short-pairs-start-input" class="form-control" type="number" min="1" max="100"
+                step="1">
+        </div>
+        <div class="ml-2">
+            <label class="col-form-label">to</label>
+        </div>
+        <div class="ml-2">
+            <input id="project-settings-factor-selection-long-short-pairs-end-input" class="form-control" type="number" min="1" max="100"
+                step="1">
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-driver-method-select">Create Factor Combinations using:</label>
+    </div>
+    <div>
+        <select id="project-settings-factor-selection-combinations-from-select" class="selectpicker" data-width="200px" multiple>
+            <option value="optimize">Optimize</option>
+            <option value="generate">Generate</option>
+        </select>
+    </div>
+</div>
+<div class="project-settings-subsection-header">Optimize Factors</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Number of Factor Clusters:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-optimize-factor-count-lo-input" class="form-control" type="number" min="1" max="200"
+            step="1">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">to</label>
+    </div>
+    <div class="ml-2">
+        <input id="project-settings-factor-selection-optimize-factor-count-hi-input" class="form-control" type="number" min="1" max="200"
+            step="1">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Min Combinations per Period:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-optimize-min-combinations-input" class="form-control" type="number" min="1" max="1000000"
+            step="1">
+    </div>
+</div>
+<div class="project-settings-subsection-header">Generate Factors</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Number of Factor Clusters:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-generate-factor-count-lo-input" class="form-control" type="number" min="1" max="200"
+            step="1">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">to</label>
+    </div>
+    <div class="ml-2">
+        <input id="project-settings-factor-selection-generate-factor-count-hi-input" class="form-control" type="number" min="1" max="200"
+            step="1">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Max Combinations per Stage:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-generate-max-combinations-per-stage-input" class="form-control" type="number" min="1" max="1000000"
+            step="1">
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Top Factor Clusters:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-generate-top-factors-count-input" class="form-control" type="number" min="1" max="999"
+            step="1">
+    </div>
+    <div class="ml-2">
+        <label class="col-form-label">ordered by</label>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-factor-selection-generate-top-factors-objective-select" class="selectpicker" data-width="200px">
+            <option value="corr">Correlation</option>
+            <option value="rank_corr">Rank Correlation</option>
+            <option value="zscore">Z-Score</option>
+        </select>
+    </div>
+</div>
+
+<div class="project-settings-subsection-header">Factor Clustering</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Start Date:</label>
+    </div>
+    <div>
+        <select id="project-settings-factor-clustering-start-month-select" class="selectpicker project-settings-factor-clustering-start-select" data-width="130px">
+        </select>
+    </div>
+    <div class="ml-2">
+        <select id="project-settings-factor-clustering-start-year-select" class="selectpicker project-settings-factor-clustering-start-select" data-width="100px" data-size="10">
+        </select>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factor-clustering-rolling-duration-input">Rolling Period Duration:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-factor-clustering-rolling-duration-input" class="form-control" type="number" min="1" max="1200"
+                step="1">
+            <div class="input-group-append">
+                <span class="input-group-text">months</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label" for="project-settings-factor-clustering-distance-threshold-scale-input">Distance Threshold Scale:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-clustering-distance-threshold-scale-input" class="form-control" type="number" min="0" max="100" step="0.01">
+    </div>
+</div>
+<div class="project-settings-subsection-header">Filter Factors (Rev Gen)</div>
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Min Factor Clusters:</label>
+    </div>
+    <div>
+        <input id="project-settings-factor-selection-filter-min-factors-input" class="form-control" type="number" min="1" max="1000"
+            step="1">
+    </div>
+</div>
+
+<div class="d-flex align-items-center mb-2">
+    <div class="project-settings-label">
+        <label class="col-form-label">Removal Rate:</label>
+    </div>
+    <div>
+        <div class="input-group">
+            <input id="project-settings-factor-selection-filter-removal-percentage-input" class="form-control" type="number" min="0" max="100"
+            step="0.01">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div hidden>
+    <div class="project-settings-subsection-header">Ticker Selection</div>
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label" for="project-settings-ticker-selection-min-stocks-input">Min Stocks:</label>
+        </div>
+        <div>
+            <input id="project-settings-ticker-selection-min-stocks-input" class="form-control" type="number" min="1" max="10000" step="1">
+        </div>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+        <div class="project-settings-label">
+            <label class="col-form-label" for="project-settings-ticker-selection-score-impact-tolerance-input">Removal Impact Tolerance:</label>
+        </div>
+        <div>
+            <input id="project-settings-ticker-selection-score-impact-tolerance-input" class="form-control" type="number" min="0" max="100" step="0.01">
+        </div>
+    </div>
+</div>
+
+<div class="d-flex mt-3 mb-3">
+    <div>
+        <button id="project-reset-settings-button" type="button" class="btn btn-warning">Reset Settings to Defaults</button>
+    </div>
+</div>

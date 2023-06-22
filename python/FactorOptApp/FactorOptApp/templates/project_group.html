@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+
+<script>
+
+  "use strict";
+
+  $(document).ready(function () {
+
+    const projectGroup = {{ project_group|tojson }};
+    const factorStrategies = {{ factor_strategies|tojson }};
+    const docTitlePrefix = "{{ app_name }} - ";
+
+    initProjectGroup(projectGroup, docTitlePrefix);
+
+    initProjectGroupRun(projectGroup, factorStrategies);
+  });
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('project_groups') }}">Project Groups</a></li>
+            <li class="breadcrumb-item active">{{ project_group['Name'] }}</li>
+        </ol>
+    </nav>
+
+  <div>
+    <ul id="top-level-tabs" class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="project-group-data-tab" data-toggle="tab" href="#project-group-data-tab-pane" role="tab"
+          aria-selected="true">Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="project-group-run-tab" data-toggle="tab" href="#project-group-run-tab-pane" role="tab"
+          aria-selected="false">Run</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div id="project-group-data-tab-pane" class="tab-pane fade show active mt-3">
+        {% include 'project_group/data.html' %}
+    </div>
+    <div id="project-group-run-tab-pane" class="tab-pane fade mt-3">
+      {% include 'project_group/run.html' %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

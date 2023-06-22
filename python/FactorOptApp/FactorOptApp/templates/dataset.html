@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+
+<script>
+
+  "use strict";
+
+  initSelectpicker();
+
+  $(document).ready(function () {
+
+    const dataset = {{ dataset|tojson }};
+    const referenceData = {{ reference_data|tojson }};
+    const docTitlePrefix = "{{ app_name }} - ";
+
+    initDataset(dataset, referenceData, docTitlePrefix);
+  });
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('datasets') }}">Datasets</a></li>
+            <li class="breadcrumb-item active">{{ dataset['Name'] }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-row mb-1">
+                <div class="col-lg-1 col-md-3 col-sm-4">
+                    <label class="col-form-label" for="dataset-name-input">Name:</label>
+                </div>
+                <div class="col">
+                    <input id="dataset-name-input" class="form-control" type="text" size="50" value="{{ dataset['Name'] }}">
+                </div>
+            </div>
+            <div class="form-row mb-1">
+                <div class="col-lg-1 col-md-3 col-sm-4">
+                    <label class="col-form-label" for="dataset-region-select">Region:</label>
+                </div>
+                <div class="col">
+                    <select id="dataset-region-select" class="selectpicker" title="Choose a Region" data-width="300px">
+                        {% for region in reference_data['Regions'] %}
+                        <option value="{{ region['ID'] }}" {% if dataset['RegionID'] == region['ID'] %}selected{% endif %}>{{ region['Name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-row mb-1">
+                <div class="col-lg-1 col-md-3 col-sm-4">
+                    <label class="col-form-label" for="dataset-sector-select">Sector:</label>
+                </div>
+                <div class="col">
+                    <select id="dataset-sector-select" class="selectpicker" title="Choose a Sector" data-width="300px">
+                    </select>
+                </div>
+            </div>
+            <div class="form-row mb-1">
+                <div class="col-lg-1 col-md-3 col-sm-4">
+                    <label class="col-form-label" for="dataset-notes-input">Notes:</label>
+                </div>
+                <div class="col">
+                    <textarea id="dataset-notes-input" class="form-control" cols="50" rows="3">{{ dataset['Notes'] }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div id="dataset-data-info" hidden>
+                <h5>Data Summary</h5>
+                <div id="dataset-data-info-detail">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-auto">
+            <div class="d-flex mb-2">
+                <label class="btn btn-primary btn-block my-0">
+                    Load Data&hellip; <input id="load-dataset-data-file-input" type="file" hidden>
+                </label>
+            </div>
+        </div>
+        <div class="col pl-1">
+            <div id="load-dataset-data-progress" class="spinner-border text-primary ml-3" role="status" hidden></div>
+            <div id="load-dataset-data-alerts-container"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

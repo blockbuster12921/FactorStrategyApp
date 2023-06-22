@@ -1,0 +1,22 @@
+FROM jupyter/minimal-notebook
+
+# Create conda environment
+RUN conda install conda
+RUN conda update -n base conda
+ADD ./conda_env.yml /var/opt/python/conda_env.yml
+RUN conda env update -n root -f /var/opt/python/conda_env.yml
+
+# Install additional packages
+RUN conda install matplotlib
+RUN conda install seaborn
+RUN conda install lxml
+RUN conda install beautifulsoup4
+RUN conda install -c ranaroussi yfinance
+
+ENV PYTHONPATH "${PYTHONPATH}:/python"
+
+WORKDIR /home/jovyan
+
+# Entry Points
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD [ "start-notebook.sh --NotebookApp.port=8890 --NotebookApp.token=''" ]

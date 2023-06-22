@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+
+<script>
+
+  "use strict";
+
+  $(document).ready(function () {
+
+    resetModalForms();
+
+    initProjects();
+
+    registerDeleteProjectEvents();
+  });
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+  {% set form = forms['AddProject'] %}
+  <div class="modal" id="add-project-modal" tabindex="-1" role="dialog" aria-labelledby="addProject">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <div class="modal-title">Add New Project</div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <form action={{ url_for('add_project') }} method="post">
+                  <div class="modal-body">
+                      {{ form.hidden_tag() }}
+                      <div class="form-group">
+                          {{ form.new_name.label(class_="") }}
+                          {{ form.new_name(class_="form-control", required=true) }}
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      {{ form.submit(class_="btn btn-primary") }}
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <div class="modal" id="delete-project-modal" tabindex="-1" role="dialog" aria-labelledby="delete-project-modal">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <div class="modal-title">Delete Project</div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+                <div class="modal-body">
+                    Are you sure you want to permanently delete the project '<span id="delete-project-modal-project-name"></span>'?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete-project-modal-submit-button" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="breadcrumb-item active">Projects</li>
+            </ol>
+        </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="d-flex">
+        <div class="h3 mb-0 pl-2 mr-auto">Projects</div>
+        <div class="pr-3 pt-1">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="show-archived-projects-check-input">
+            <label class="form-check-label" for="show-archived-projects-check-input">
+              Show archived projects
+            </label>
+          </div>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add-project-modal">
+            <i class="fas fa-plus" aria-hidden="true"></i> New Project
+          </button>
+          <button id="create-project-group-button" type="button" class="btn btn-primary btn-sm">
+            <i class="fas fa-layer-group" aria-hidden="true"></i> New Project Group
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <div>
+        <table id="projects-table" class="table compact object-table w-100" cellspacing="0">
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

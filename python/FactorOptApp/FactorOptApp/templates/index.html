@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="d-flex align-content-start flex-wrap">
+    <div class="home-page-button">
+      <a class="btn btn-primary btn-lg btn-block py-3" role="button" href="{{ url_for('datasets') }}">
+        <i class="fas fa-table fa-fw fa-3x" aria-hidden="true"></i>
+        <h3 class="mt-2 mb-0">
+          Datasets
+        </h3>
+      </a>
+    </div>
+    <div class="home-page-button">
+      <a class="btn btn-primary btn-lg btn-block py-3" role="button" href="{{ url_for('projects') }}">
+        <i class="fas fa-project-diagram fa-3x" aria-hidden="true"></i>
+        <h3 class="mt-2 mb-0">
+          Projects
+        </h3>
+      </a>
+    </div>
+    <div class="home-page-button">
+      <a class="btn btn-primary btn-lg btn-block py-3" role="button" href="{{ url_for('project_groups') }}">
+        <i class="fas fa-layer-group fa-fw fa-3x" aria-hidden="true"></i>
+        <h3 class="mt-2 mb-0">
+          Project Groups
+        </h3>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="row">
+  </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,5 @@
+00 * * * * root bash -c /backup-full.sh >> /proc/1/fd/1 2>/proc/1/fd/2
+30 * * * * root bash -c /backup-mini.sh >> /proc/1/fd/1 2>/proc/1/fd/2
+31 * * * * root bash -c /backup-latest-bson.sh >> /proc/1/fd/1 2>/proc/1/fd/2
+# An empty line is required at the end of this file for a valid cron file.
+

@@ -1,0 +1,15 @@
+FROM continuumio/miniconda3
+
+# Create conda environment
+RUN conda install conda
+RUN conda update -n base conda
+ADD ./conda_env.yml /var/opt/python/conda_env.yml
+RUN conda env update -n root -f /var/opt/python/conda_env.yml
+
+ENV PYTHONPATH "${PYTHONPATH}:/python"
+
+WORKDIR /python/FactorCore
+
+# Entry point
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD [ "python -m unittest" ]

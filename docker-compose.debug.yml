@@ -1,0 +1,7 @@
+version: '3'
+services:
+  flask_app:
+    entrypoint: [ "/bin/bash", "-c" ]
+    command: [ "python -u runserver.py" ]
+    ports:
+     - 5003:5001
